@@ -12,28 +12,28 @@
       "path": "/path/to/product_showcase.jpg",
       "name": "Product Showcase",
       "duration": 8,
-      "added_date": "2025-06-09T12:31:41.941828"
+      "added_date": "2025-06-11T13:38:27.614458"
     },
     {
       "type": "video",
       "path": "/path/to/gaming_demo.mp4",
       "name": "Gaming Demo",
       "duration": 25,
-      "added_date": "2025-06-09T12:31:41.942006"
+      "added_date": "2025-06-11T13:38:27.615116"
     },
     {
       "type": "application",
       "path": "/path/to/demo_app.exe",
       "name": "Demo Application",
       "duration": 30,
-      "added_date": "2025-06-09T12:31:41.942159"
+      "added_date": "2025-06-11T13:38:27.615627"
     },
     {
       "type": "web",
       "path": "https://example.com/product-demo",
       "name": "Web Demo",
       "duration": 20,
-      "added_date": "2025-06-09T12:31:41.942794"
+      "added_date": "2025-06-11T13:38:27.616068"
     }
   ]
 }

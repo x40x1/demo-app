@@ -237,12 +237,24 @@ def demo_interactive_session():
     
     demo.stop_demo()
 
-    # Export demo content to file
-    export_path = "demo_export.json"
-    demo.export_content(export_path)
-
-    # Import it back (just for demonstration)
-    demo.import_content(export_path)
+    # Optional: Demonstrate export/import functionality
+    print("\n📤 Demonstrating export/import functionality...")
+    print("This will create a 'demo_export.json' file with the demo content.")
+    
+    try:
+        user_input = input("Do you want to test export/import? (y/N): ").strip().lower()
+        if user_input in ['y', 'yes']:
+            export_path = "demo_export.json"
+            print(f"📤 Exporting demo content to {export_path}...")
+            demo.export_content(export_path)
+            
+            print(f"📥 Re-importing content from {export_path} for demonstration...")
+            demo.import_content(export_path)
+            print("✅ Export/import demonstration completed!")
+        else:
+            print("⏭️  Skipping export/import demonstration.")
+    except (KeyboardInterrupt, EOFError):
+        print("\n⏭️  Skipping export/import demonstration.")
 
     print("\n✅ Demo simulation completed!")
     print("\n📝 Next Steps for Production:")

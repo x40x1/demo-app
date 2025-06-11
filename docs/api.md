@@ -19,12 +19,19 @@ class DemoModeCore:
     def add_content(self, content_type, path, name=None, duration=None)
     def remove_content(self, index)
     def list_content(self)
-    def export_content(self, export_path)
-    def import_content(self, import_path)
+    def export_content(self, export_path)  # Creates a JSON file at export_path
+    def import_content(self, import_path)  # Overwrites current content with imported data
     def start_demo(self)
     def stop_demo(self)
     def get_status(self)
 ```
+
+### Export/Import Side Effects
+- `export_content()`: Creates a JSON file at the specified path containing all demo content
+- `import_content()`: Replaces current demo content with data from the imported file and saves to settings
+
+### Interactive Demo Function
+The `demo_interactive_session()` function now prompts for user consent before demonstrating export/import functionality to avoid creating files without explicit user intent.
 
 ## Settings Management
 ```python
