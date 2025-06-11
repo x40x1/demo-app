@@ -301,12 +301,21 @@ class DemoModeApp:
     
     def prompt_master_password(self):
         """Prompt for master password to exit demo mode"""
-        password_dialog = PasswordDialog(self.root, "Enter Master Password", 
-                                       "Enter the master password to exit demo mode:")
+        stored_password = self.settings_manager.get('master_password')
+
+        # If no password is set, exit directly without prompting
+        if not stored_password:
+            self.stop_demo_mode()
+            return
+
+        password_dialog = PasswordDialog(
+            self.root,
+            "Enter Master Password",
+            "Enter the master password to exit demo mode:"
+        )
         self.root.wait_window(password_dialog.dialog)
-        
+
         if password_dialog.result:
-            stored_password = self.settings_manager.get('master_password')
             if self.settings_manager.verify_password(password_dialog.result, stored_password):
                 self.stop_demo_mode()
             else:
