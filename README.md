@@ -411,8 +411,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ### Community
 - [GitHub Issues](https://github.com/x40x1/demo-app/issues)
-- [Discussion Forum](https://github.com/x40x1/demo-app/discussions)
-- [Wiki](https://github.com/x40x1/demo-mode-app/wiki)
 
 ---
 
