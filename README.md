@@ -368,6 +368,34 @@ class InputController:
     def unlock_keyboard(self)
 ```
 
+### Core Module
+```python
+class DemoModeCore:
+    def add_content(self, content_type, path, name=None, duration=None)
+    def remove_content(self, index)
+    def list_content(self)
+    def export_content(self, export_path)
+    def import_content(self, import_path)
+    def start_demo(self)
+    def stop_demo(self)
+    def get_status(self)
+```
+
+## ⌨️ Command Line Interface
+
+Use `cli.py` to manage demo content without launching the GUI:
+
+```bash
+# List configured content
+python cli.py list
+
+# Add a photo
+python cli.py add photo /path/to/image.jpg "Storefront" --duration 10
+
+# Export all items
+python cli.py export demo_content.json
+```
+
 ## 🤝 Contributing
 
 ### Development Setup

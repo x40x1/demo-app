@@ -181,6 +181,30 @@ class DemoModeCore:
             print(f"   Duration: {content['duration']}s")
             print()
 
+    def export_content(self, export_path):
+        """Export demo content list to a JSON file"""
+        try:
+            with open(export_path, 'w') as f:
+                json.dump(self.demo_content, f, indent=2)
+            print(f"💾 Content exported to {export_path}")
+            return True
+        except Exception as e:
+            print(f"❌ Failed to export content: {e}")
+            return False
+
+    def import_content(self, import_path):
+        """Import demo content list from a JSON file"""
+        try:
+            with open(import_path, 'r') as f:
+                self.demo_content = json.load(f)
+            self.settings['demo_content'] = self.demo_content
+            self.save_settings()
+            print(f"📥 Imported content from {import_path}")
+            return True
+        except Exception as e:
+            print(f"❌ Failed to import content: {e}")
+            return False
+
 
 def demo_interactive_session():
     """Interactive demo session"""
@@ -206,13 +230,20 @@ def demo_interactive_session():
     
     print("\n🎬 Starting demo simulation...")
     demo.start_demo()
-    
+
     # Let demo run for a few cycles
     print("⏳ Running demo for 15 seconds...")
     time.sleep(15)
     
     demo.stop_demo()
-    
+
+    # Export demo content to file
+    export_path = "demo_export.json"
+    demo.export_content(export_path)
+
+    # Import it back (just for demonstration)
+    demo.import_content(export_path)
+
     print("\n✅ Demo simulation completed!")
     print("\n📝 Next Steps for Production:")
     print("1. Install on Windows PC with Python")
