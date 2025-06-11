@@ -304,7 +304,7 @@ class DemoModeApp:
         stored_password = self.settings_manager.get('master_password')
 
         # If no password is set, exit directly without prompting
-        if not stored_password:
+        if stored_password is None or stored_password == "":
             self.stop_demo_mode()
             return
 
