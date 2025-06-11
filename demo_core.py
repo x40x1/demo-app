@@ -181,6 +181,30 @@ class DemoModeCore:
             print(f"   Duration: {content['duration']}s")
             print()
 
+    def export_content(self, export_path):
+        """Export demo content list to a JSON file"""
+        try:
+            with open(export_path, 'w') as f:
+                json.dump(self.demo_content, f, indent=2)
+            print(f"💾 Content exported to {export_path}")
+            return True
+        except Exception as e:
+            print(f"❌ Failed to export content: {e}")
+            return False
+
+    def import_content(self, import_path):
+        """Import demo content list from a JSON file"""
+        try:
+            with open(import_path, 'r') as f:
+                self.demo_content = json.load(f)
+            self.settings['demo_content'] = self.demo_content
+            self.save_settings()
+            print(f"📥 Imported content from {import_path}")
+            return True
+        except Exception as e:
+            print(f"❌ Failed to import content: {e}")
+            return False
+
 
 def demo_interactive_session():
     """Interactive demo session"""
@@ -206,13 +230,32 @@ def demo_interactive_session():
     
     print("\n🎬 Starting demo simulation...")
     demo.start_demo()
-    
+
     # Let demo run for a few cycles
     print("⏳ Running demo for 15 seconds...")
     time.sleep(15)
     
     demo.stop_demo()
+
+    # Optional: Demonstrate export/import functionality
+    print("\n📤 Demonstrating export/import functionality...")
+    print("This will create a 'demo_export.json' file with the demo content.")
     
+    try:
+        user_input = input("Do you want to test export/import? (y/N): ").strip().lower()
+        if user_input in ['y', 'yes']:
+            export_path = "demo_export.json"
+            print(f"📤 Exporting demo content to {export_path}...")
+            demo.export_content(export_path)
+            
+            print(f"📥 Re-importing content from {export_path} for demonstration...")
+            demo.import_content(export_path)
+            print("✅ Export/import demonstration completed!")
+        else:
+            print("⏭️  Skipping export/import demonstration.")
+    except (KeyboardInterrupt, EOFError):
+        print("\n⏭️  Skipping export/import demonstration.")
+
     print("\n✅ Demo simulation completed!")
     print("\n📝 Next Steps for Production:")
     print("1. Install on Windows PC with Python")
